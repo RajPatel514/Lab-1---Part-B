@@ -4,6 +4,8 @@ const fs = require('fs');
 const server = http.createServer((req, res) => {
     console.log(`Request received: ${req.method} ${req.url}`);
 
+
+    // home page route
     if (req.url === '/') {
         fs.readFile('./index.html', (err, data) => {
             if (err) {
@@ -15,6 +17,7 @@ const server = http.createServer((req, res) => {
             }
         });
 
+        // about page
     } else if (req.url === '/about') {
         fs.readFile('./about.html', (err, data) => {
             if (err) {
@@ -26,6 +29,7 @@ const server = http.createServer((req, res) => {
             }
         });
 
+        //contact page
     } else if (req.url === '/contact') {
         fs.readFile('./contact.html', (err, data) => {
             if (err) {
@@ -37,6 +41,7 @@ const server = http.createServer((req, res) => {
             }
         });
 
+        //css
     } else if (req.url === '/styles.css') {
         fs.readFile('./styles.css', (err, data) => {
             if (err) {
@@ -48,10 +53,10 @@ const server = http.createServer((req, res) => {
             }
         });
 
-
+        //404 error code when page doesnt find
     } else {
         res.statusCode = 404;
-        res.end('Page not found');
+        res.end('Error - 404 - Page not found');
     }
 });
 
